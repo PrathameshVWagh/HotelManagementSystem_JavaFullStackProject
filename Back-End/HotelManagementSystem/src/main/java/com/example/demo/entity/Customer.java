@@ -4,12 +4,16 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -51,8 +55,10 @@ public class Customer {
     
     @Column(name="customerpassword")
     private String password;
+    
+    @OneToMany(mappedBy="book")
+	private Set<Booking>booking;
 	
-   
     
 	public Customer() {
 	
@@ -69,8 +75,11 @@ public class Customer {
 		this.employeeAddress = employeeAddress;
 		this.username=username;
 		this.password=password;
+		
 	}
 
+
+	
 
 	public int getEmployeeId() {
 		return employeeId;
@@ -147,10 +156,13 @@ public class Customer {
 	public String toString() {
 		return "Customer [employeeId=" + employeeId + ", employeeName=" + employeeName + ", employeeEmailId="
 				+ employeeEmailId + ", employeeContactNumber=" + employeeContactNumber + ", employeeAddress="
-				+ employeeAddress + ", username=" + username + ", password=" + password + "]";
+				+ employeeAddress + ", username=" + username + ", password=" + password + ", booking=" + booking + "]";
 	}
 
 
+	
+
+	
 	
 
 }

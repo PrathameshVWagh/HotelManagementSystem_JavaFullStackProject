@@ -16,6 +16,9 @@ import { CustomersidebookingComponent } from './customersidebooking/customerside
 import { CustomerallbookingsComponent } from './customerallbookings/customerallbookings.component';
 import { CustomersideAddcustomerComponent } from './customerside-addcustomer/customerside-addcustomer.component';
 import { CustomersideroomtypesComponent } from './customersideroomtypes/customersideroomtypes.component';
+import { CustomersideroombookformComponent } from './customersideroombookform/customersideroombookform.component';
+import { PaymentModuleComponent } from './payment-module/payment-module.component';
+import { CustomerSidePaymentComponent } from './customer-side-payment/customer-side-payment.component';
 
 
 const routes: Routes = [
@@ -35,11 +38,15 @@ const routes: Routes = [
   {path:'customerlogin',component: CustomerLoginComponent},
   {path:'customerdashboard',component:CustomerdashboardComponent},
   
-  {path:'customerdashboard/roombooking',component: CustomersidebookingComponent},
+  {path:'roombooking/:id',component: CustomersidebookingComponent},
   {path:'customerdashboard/customerallbookings',component: CustomerallbookingsComponent},
   {path:'addcustomer',component: CustomersideAddcustomerComponent},
-  {path:'customerdashboard/roomtypesbooking',component: CustomersideroomtypesComponent}
-
+  {path:'customerdashboard/roomtypesbooking',component: CustomersideroomtypesComponent},
+  {path:'roombookingform/:id',component: CustomersideroombookformComponent},
+  {path:'payment/:id/:total',component: PaymentModuleComponent},
+  
+  {path:'customerSidepayment/:id/:total',component: CustomerSidePaymentComponent}
+  
   
   
 ];

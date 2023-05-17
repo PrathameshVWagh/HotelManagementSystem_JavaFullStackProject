@@ -26,4 +26,17 @@ export class UpdateCustomerComponent implements OnInit{
 
       }
 
+      onlyNumbers(event: {
+        keyCode: any; which: any; 
+  }):boolean{
+        const charCode = (event.which)?event.which:event.keyCode;
+        if(charCode>31 && (charCode<48 || charCode>57))
+        {
+          console.log("chacode restricted : "+charCode);
+          return false;
+        }
+        return true;
+  
+      }
+
 }

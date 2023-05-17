@@ -22,6 +22,8 @@
             <td>{{customer.username}}</td>
             <td>{{customer.password}}</td>
             <td> <button (click)="updateCustomer(customer.employeeId)" class="btn btn-outline-primary">Update</button></td>
+            <td> <button (click)="deleteCustomer(customer.employeeId)" class="btn btn-outline-primary">Delete</button></td>
+           
             <td> <button (click)="BookRoom(customer.employeeId)" class="btn btn-outline-primary">Book Room</button></td>
             
         </tr>

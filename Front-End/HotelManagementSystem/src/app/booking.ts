@@ -5,7 +5,8 @@ export class Booking {
         public roomNo:number,
         public noOfDays:number,
         public roomType:string,
-        public totalAmount:number 
+        public totalAmount:number,
+        public customerId:number 
         ){}
 
 }

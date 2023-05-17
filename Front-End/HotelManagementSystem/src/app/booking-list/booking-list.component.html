@@ -5,7 +5,7 @@
     <thead class="table-danger" >
         
         <th>Book ID</th>
-       
+       <th>Customer ID</th>
         <th>Room No</th>
         <th>No of Days</th>
         <th>Room Price</th>
@@ -16,7 +16,7 @@
         <tr *ngFor ="let book of bookings" class="table-light">
             
             <td>{{book.bookId}}</td>
-           
+            <td>{{book.customerId}}</td>
             <td>{{book.roomNo}}</td>
             <td>{{book.noOfDays}}</td>
             <td>{{book.roomType}}</td>

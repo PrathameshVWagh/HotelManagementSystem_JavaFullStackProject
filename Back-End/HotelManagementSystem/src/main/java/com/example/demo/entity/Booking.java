@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -40,6 +42,14 @@ public class Booking {
 	
 	
 	
+	@NotNull(message = "book_id can not be null")
+	@Column(name="customer_id")
+	private int customerId;
+    
+	@ManyToOne(targetEntity=Booking.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="customer_id",insertable=false,updatable=false)
+	private Booking book;
+	
 	
 	
 	public Booking() {
@@ -48,13 +58,14 @@ public class Booking {
 
 	public Booking(int bookId,
 			@NotNull(message = "roomno cannot be null") @Size(min = 1, message = "room number must be more than 0") int roomNo,
-			int noOfDays, String roomType, double totalAmount) {
+			int noOfDays, String roomType, double totalAmount,int customerId) {
 		super();
 		this.bookId = bookId;
 		this.roomNo = roomNo;
 		this.noOfDays = noOfDays;
 		this.roomType = roomType;
 		this.totalAmount = totalAmount;
+		this.customerId=customerId;
 		
 	}
 	
@@ -72,6 +83,18 @@ public class Booking {
 
 	public int getRoomNo() {
 		return roomNo;
+	}
+
+	
+
+	
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	public void setRoomNo(int roomNo) {
@@ -105,8 +128,9 @@ public class Booking {
 	@Override
 	public String toString() {
 		return "Booking [bookId=" + bookId + ", roomNo=" + roomNo + ", noOfDays=" + noOfDays + ", roomType=" + roomType
-				+ ", totalAmount=" + totalAmount + "]";
+				+ ", totalAmount=" + totalAmount + ", customerId=" + customerId + "]";
 	}
+
 
 	
 

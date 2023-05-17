@@ -41,6 +41,17 @@ export class CustomerListComponent implements OnInit{
 
   }
 
+  deleteCustomer(id:number):void
+  {
+    console.log(id);
+    if(confirm("Do you want to delete ?")){
+      this.customerService. deleteCustomer(id).subscribe(data=>{
+        console.log(data);
+        this.getCustomer();
+      })
+    };
+  }
+
   goToDashboard(){
     this.router.navigateByUrl("/dashboard");    
   }

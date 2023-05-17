@@ -32,6 +32,8 @@ public class BookingServiceImpl implements BookingService {
 			e.setNoOfDays(e.getNoOfDays());
 			e.setRoomType(e.getRoomType());
 			e.setTotalAmount(e.getTotalAmount());
+		
+			e.setCustomerId(e.getCustomerId());
 			
 			return dao.save(e);
 		} else {

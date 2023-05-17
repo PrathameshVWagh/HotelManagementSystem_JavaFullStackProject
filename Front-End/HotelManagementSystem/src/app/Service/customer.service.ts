@@ -12,7 +12,7 @@ export class CustomerService {
   private addcus="http://localhost:8080/customer/addCustomer";
   private  cusfind="http://localhost:8080/customer/findCustomer";
   private cusupdate="http://localhost:8080/customer/updateCustomer";
-
+  private custdel="http://localhost:8080/customer/deleteCustomer";
   constructor(private httpClient:HttpClient) { }
 
   getCustomer():Observable<any>{
@@ -38,6 +38,8 @@ export class CustomerService {
     return  this.httpClient.post<Customer>(this.addcus,customer,httpOptions);
   }
 
+  
+
   getCustomerById(id:number):Observable<Customer>{
     
   const empIDURl=this.cusfind+"/"+id;
@@ -54,6 +56,17 @@ export class CustomerService {
     return  this.httpClient.put<Customer>(this.cusupdate,customer,httpOptions);
   }
 
+  deleteCustomer(id: Number) {
+   
+    const httpOptions = {
+      headers : new HttpHeaders({
+          'Content-Type' : 'application/json',
+          'Authorization' : 'auth-token',
+          'Access-Control-Allow-Origin' : '*'
+      })
+    };
+    return  this.httpClient.delete<Customer>(this.custdel+`/${id}`,httpOptions);
+  }
 }
   
 

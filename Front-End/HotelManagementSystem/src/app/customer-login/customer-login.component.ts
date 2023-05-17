@@ -10,10 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CustomerLoginComponent {
   user2: Customer = new Customer(0, "", "", "", "","","")
-  
+
+  users: Customer = JSON.parse(sessionStorage.getItem("user2") || '{}')
 
   constructor(private userservices: CustomerService, private route: Router, public activateRoute: ActivatedRoute) { }
-
+ 
+ 
   ngOnInit(): void {
   }
   Getlogin(): void {

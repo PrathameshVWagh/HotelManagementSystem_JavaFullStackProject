@@ -13,8 +13,9 @@ import { CustomerService } from '../Service/customer.service';
 export class AddBookingComponent implements OnInit {
   id:number;
   result:number;
+
   customer:Customer = new Customer(0,"","","","","","");
-  booking :Booking = new Booking(0,0,0,'',0);
+  booking :Booking = new Booking(0,0,0,'',0,0);
   constructor(private bookingService:BookingService,private route:ActivatedRoute,private router:Router,private customerService:CustomerService){}
  
   ngOnInit(): void {
@@ -26,19 +27,36 @@ export class AddBookingComponent implements OnInit {
 
     Calculate(v:string,b:string){
       this.result=parseInt(v)*parseInt(b);
-      
+   
   
      }
      
-    Book(){
+  Book(id:number){
       console.log(this.result);
       console.log(this.customer.employeeId);
       this.booking.totalAmount=this.result;
+      this.booking.customerId=this.id;
+      console.log(this.booking);
+      this.bookingService.bookRoom(this.booking).subscribe(data=>{
+        
+        this.router.navigateByUrl("payment/"+id+"/"+this.result)});
+
+        
+  ///dashboard/bookings
+      }
+     
+   /*   Pay(id:number){
+
+      console.log(this.result);
+      console.log(this.customer.employeeId);
+      this.booking.totalAmount=this.result;
+      this.booking.customerId=this.id;
       console.log(this.booking);
       this.bookingService.bookRoom(this.booking).subscribe(data=>
-        this.router.navigateByUrl("/dashboard/bookings"));
-  
-      }
+      this.router.navigateByUrl("payment/"+id));
+        
+
+      }*/
 
 
 }

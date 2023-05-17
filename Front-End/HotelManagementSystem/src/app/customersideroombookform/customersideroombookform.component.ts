@@ -6,13 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../Service/customer.service';
 
 @Component({
-  selector: 'app-customersidebooking',
-  templateUrl: './customersidebooking.component.html',
-  styleUrls: ['./customersidebooking.component.css']
+  selector: 'app-customersideroombookform',
+  templateUrl: './customersideroombookform.component.html',
+  styleUrls: ['./customersideroombookform.component.css']
 })
-export class CustomersidebookingComponent {
-
-
+export class CustomersideroombookformComponent {
   id:number;
   result:number;
   customer:Customer = new Customer(0,"","","","","","");
@@ -27,17 +25,25 @@ export class CustomersidebookingComponent {
     this.customerService.getCustomerById(this.id).subscribe(data=>{this.customer=data;},error=>console.log(error));
    }
 
-  
-   Bookroom(id:number){
-   
-      this.router.navigateByUrl("/roombookingform/"+id);
-  
+   Calculate(v:string,b:string){
+    this.result=parseInt(v)*parseInt(b);
     
 
    }
+  
 
    
-  
+  Book(id:number){
+    console.log(this.result);
+    console.log(this.customer.employeeId);
+    this.booking.totalAmount=this.result;
+    this.booking.customerId=this.id;
+    console.log(this.booking);
+    this.bookingService.bookRoom(this.booking).subscribe(data=>
+     // this.router.navigateByUrl("customerdashboard/customerallbookings"));
+     this.router.navigateByUrl("customerSidepayment/"+id+"/"+this.result));
+
+    }
     
 
 
